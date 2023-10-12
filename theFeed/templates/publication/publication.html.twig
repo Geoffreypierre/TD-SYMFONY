@@ -1,0 +1,30 @@
+<!-- Pour chaque publication, afficher (avec une boucle) le code HTML ci-dessous !-->
+<div class="feedy">
+    <div class="feedy-header">
+        <a href="{{path('pagePerso', {login: publication.auteur.login})}}">
+            {% if publication.auteur.nomPhotoProfil != null %}
+                {% set avatUrl = 'img/utilisateurs/uploads/' ~ publication.auteur.nomPhotoProfil %}
+                <img class="avatar" src="{{asset(avatUrl)}}" alt="avatar de l'utilisateur">
+            {% else %}
+                <img class="avatar" src="{{asset('img/utilisateurs/anonyme.jpg')}}" alt="avatar de l'utilisateur">
+            {% endif %}
+        </a>
+        <div class="feedy-info">
+            <span {% if publication.auteur.premium %} class="premium-login"{% endif %}>
+                {{publication.auteur.login}}
+            </span>
+
+            <span>
+                -
+            </span>
+            <span>{{publication.datePublication|date('d/m/Y')}}</span>
+            <p>{{publication.message}}</p>
+
+            {% if is_granted('ROLE_USER') and app.user==publication.auteur %}
+                <button id="button_feedy" class="delete-feedy" data-publication-id="{{ publication.id }}">Supprimer</button>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<!-- Fin de la boucle -->

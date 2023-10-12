@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block js %}
+    <script defer type="text/javascript" src="{{asset('js/fichier.js')}}"></script>
+{% endblock %}
+
+
+ {# {% block page_title %}
+     Page de {{ user.login }}
+ {% endblock %} #}
+
+ {% block page_content %}
+     <main>
+         <div class="center">
+             <p id="titre-page-perso">Page de {{ user.login }}</p>
+         </div>
+         <div class="feed">
+             {% for publication in user.publications %}
+                 {{ include('publication/publication.html.twig', {'publication': publication}) }}
+             {% endfor %}
+         </div>
+     </main>
+ {% endblock %}

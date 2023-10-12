@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+{% for flashMsg in app.flashes("danger") %}
+    ...
+    {{ flashMsg }}
+    ...
+{% endfor %}
+<ul>
+    {% for value in listeCourses %}
+        <li><strong>{{ value }}</strong></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
